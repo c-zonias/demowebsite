@@ -5,62 +5,99 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Currency Converter</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
             text-align: center;
             padding: 20px;
-            background-color: #f4f4f4;
+            background: linear-gradient(120deg, #84fab0, #8fd3f4);
+            color: #333;
+            margin: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #444;
         }
         .converter {
             background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
-            margin-top: 50px;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
         }
         select, input {
             margin: 10px 0;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            width: 80%;
+            padding: 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            width: calc(100% - 20px);
+            font-size: 1rem;
         }
         button {
-            padding: 10px 20px;
+            padding: 15px 30px;
             border: none;
             background-color: #28a745;
             color: #fff;
-            font-size: 16px;
-            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
         button:hover {
             background-color: #218838;
         }
         .result {
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 1.2rem;
+            color: #444;
+            font-weight: 600;
+        }
+        .adsense {
+            margin-top: 30px;
         }
     </style>
 </head>
 <body>
-    <h1>Currency Converter</h1>
-    <div class="converter">
-        <input type="number" id="amount" placeholder="Enter amount" />
-        <select id="fromCurrency">
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="INR">INR</option>       </select>
-        <select id="toCurrency">
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-            <option value="INR">INR</option>
-        </select>
-        <button onclick="convertCurrency()">Convert</button>
-        <div class="result" id="result"></div>
+    <div class="container">
+        <h1>Currency Converter</h1>
+        <div class="converter">
+            <input type="number" id="amount" placeholder="Enter amount" />
+            <select id="fromCurrency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="INR">INR</option>
+            </select>
+            <select id="toCurrency">
+                <option value="USD">USD</option>
+                <option value="EUR">EUR</option>
+                <option value="GBP">GBP</option>
+                <option value="INR">INR</option>
+            </select>
+            <button onclick="convertCurrency()">Convert</button>
+            <div class="result" id="result"></div>
+        </div>
+
+        <!-- AdSense Placeholder -->
+        <div class="adsense">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="your-adsense-client-id"
+                data-ad-slot="your-ad-unit-id"
+                data-ad-format="auto"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
     </div>
 
     <script>
@@ -68,19 +105,19 @@
             const amount = document.getElementById('amount').value;
             const fromCurrency = document.getElementById('fromCurrency').value;
             const toCurrency = document.getElementById('toCurrency').value;
-    
+
             if (!amount || amount <= 0) {
                 document.getElementById('result').innerText = "Please enter a valid amount.";
                 return;
             }
-    
+
             const apiKey = 'c6ec06e535e8e22d93d4c11b'; // Replace with your valid API key
             const url = `https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`;
-    
+
             try {
                 const response = await fetch(url);
                 const data = await response.json();
-    
+
                 if (data.result === "success") {
                     const rate = data.conversion_rates[toCurrency];
                     const convertedAmount = (amount * rate).toFixed(2);
@@ -93,4 +130,7 @@
             }
         }
     </script>
+</body>
+</html>
+
     
