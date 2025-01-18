@@ -1,7 +1,7 @@
-##for tracking changes
+#for tracking changes
 
-## new ideas section:
+# new ideas section:
 
-##add points here
+#add points here
 
-##section to add the adsense placeholder
+#section to add the adsense placeholder
