@@ -5,3 +5,4 @@
 #add points here
 
 #section to add the adsense placeholder
+pending for ads status
